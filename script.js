@@ -17,20 +17,18 @@ fetch('https://striveschool-api.herokuapp.com/books')
       // SEZIONE COL
       const row = document.getElementById('row')
       const column = document.createElement('div')
-      column.classList.add('col')
-      column.classList.add('my-3')
+      column.classList.add('col', 'my-3')
       row.appendChild(column)
 
       const card = document.createElement('div')
-      card.classList.add('card')
-      card.classList.add('h-100')
+      card.classList.add('card', 'h-100')
       column.appendChild(card)
 
       // SEZIONE IMG
       const cardImg = document.createElement('div')
       const bookImg = document.createElement('img')
       bookImg.classList.add('card-img-top')
-      bookImg.classList.add('h-100')
+      bookImg.style.height = '400px'
       bookImg.src = booksData[i].img
       card.appendChild(cardImg)
       cardImg.appendChild(bookImg)
@@ -58,17 +56,13 @@ fetch('https://striveschool-api.herokuapp.com/books')
 
       // SEZIONE SCARTA
       const scarta = document.createElement('button')
-      scarta.classList.add('btn')
-      scarta.classList.add('btn-danger')
-      scarta.classList.add('me-3')
+      scarta.classList.add('btn', 'btn-danger', 'me-3')
       scarta.innerText = 'SCARTA'
       cardText.appendChild(scarta)
 
       //   SEZIONE COMPRA
       const compra = document.createElement('button')
-      compra.classList.add('btn')
-      compra.classList.add('btn-success')
-      compra.classList.add('my-3')
+      compra.classList.add('btn', 'btn-success', 'my-3')
       compra.innerText = 'COMPRA ORA'
       cardText.appendChild(compra)
 
@@ -76,25 +70,25 @@ fetch('https://striveschool-api.herokuapp.com/books')
         card.classList.add('d-none')
       })
     }
-    const buy = () => {
-      const list = document.getElementById('cart') //reference ul
-      const newLi = document.createElement('li') //creazione li
-      newLi.innerText = `${card}` // riempimento li
-      list.appendChild(newLi) //appendo li
-      localStorage.setItem('product', card) //card cliccata nel localStorage
-    }
+
+    // const buy = (e) => {
+    //   const bookTitle = e.target.parentElement.querySelector('h5').innerText
+    //   const list = document.getElementById('cart') //reference ul
+    //   const newLi = document.createElement('li')
+    //   list.appendChild(newLi)
+    //   newLi.innerText = bookTitle
+    //   localStorage.setItem('shoppingCart', JSON.stringify(newLi))
+    // }
+    // compra.addEventListener('click', buy)
 
     const remove = document.createElement('button')
-    remove.classList.add('btn')
-    remove.classList.add('btn-danger')
+    remove.classList.add('btn', 'btn-danger')
     remove.innerText = 'RIMUOVI'
     newLi.appendChild(remove)
 
     remove.addEventListener('click', () => {
       newLi.classList.add('d-none')
     })
-
-    compra.addEventListener('click', buy)
   })
   .catch((err) => {
     console.log(err)
