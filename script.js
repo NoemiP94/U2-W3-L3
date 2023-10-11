@@ -75,27 +75,26 @@ fetch('https://striveschool-api.herokuapp.com/books')
       scarta.addEventListener('click', () => {
         card.classList.add('d-none')
       })
-
-      const buy = () => {
-        const list = document.getElementById('cart') //reference ul
-        const newLi = document.createElement('li') //creazione li
-        newLi.innerText = `${card}` // riempimento li
-        list.appendChild(newLi) //appendo li
-        localStorage.setItem('product', card) //card cliccata nel localStorage
-      }
-
-      const remove = document.createElement('button')
-      remove.classList.add('btn')
-      remove.classList.add('btn-danger')
-      remove.innerText = 'RIMUOVI'
-      newLi.appendChild(remove)
-
-      remove.addEventListener('click', () => {
-        newLi.classList.add('d-none')
-      })
-
-      compra.addEventListener('click', buy)
     }
+    const buy = () => {
+      const list = document.getElementById('cart') //reference ul
+      const newLi = document.createElement('li') //creazione li
+      newLi.innerText = `${card}` // riempimento li
+      list.appendChild(newLi) //appendo li
+      localStorage.setItem('product', card) //card cliccata nel localStorage
+    }
+
+    const remove = document.createElement('button')
+    remove.classList.add('btn')
+    remove.classList.add('btn-danger')
+    remove.innerText = 'RIMUOVI'
+    newLi.appendChild(remove)
+
+    remove.addEventListener('click', () => {
+      newLi.classList.add('d-none')
+    })
+
+    compra.addEventListener('click', buy)
   })
   .catch((err) => {
     console.log(err)
